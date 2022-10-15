@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Property\PropertyController;
 
-/*
+/*Users
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('', [PropertyController::class, 'home']);
+Route::get('view_properties', [PropertyController::class, 'index']);
+
+
+require __DIR__ . '/auth.php';
