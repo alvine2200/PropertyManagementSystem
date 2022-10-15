@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <base href="/public">
   	<title>Property Management System</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -51,20 +52,21 @@
 
         
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 style="margin-left: 100px;" class="mb-4"> Create A Property </h2>
+        <h2 style="margin-left: 100px;" class="mb-4"> Edit A Property </h2>
         @include('property.alerts')
 
         {{-- form begins here --}}
         <div class="form">
-            <form action="{{url('create_property')}}" method="post">
+            <form action="{{url('update_property',$props->id)}}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="name">Property Name</label>
-                    <input  type="text" name="name" class="form-control"  placeholder="Enter the Property Name">
+                    <input  type="text" value="{{$props->name}}" name="name" class="form-control"  placeholder="Enter the Property Name">
                 </div>
                 <div class="form-group">
                     <label for="property_type"> Property Type </label>
                     <select  multple name="property_type" class="form-control">
+                        <option  value="{{$props->property_type}}">{{$props->property_type}}</option>
                         <option  value="Residential">Residential</option>
                         <option value="Commercial">Commercial</option>
                         <option value="More">More</option>
@@ -72,11 +74,12 @@
                 </div>
                 <div class="form-group">
                     <label for="location"> Location </label>
-                    <input  type="text" name="location" class="form-control"  placeholder="Location of the Property">
+                    <input  type="text" name="location" value="{{$props->location}}" class="form-control"  placeholder="Location of the Property">
                 </div>
                 <div class="form-group">
                     <label for="lease_type">Lease Type</label>
                     <select  name="lease_type" class="form-control">
+                        <option  value="{{$props->lease_type}}">{{$props->lease_type}}</option>
                         <option  value="Monthly">Monthly</option>
                         <option value="Daily">Daily</option>
                         <option value="Hourly">Hourly</option>
@@ -88,8 +91,7 @@
             </form>
         </div>
 
-        {{-- form ends --}}
-        
+        {{-- form ends --}}       
         
 
       </div>

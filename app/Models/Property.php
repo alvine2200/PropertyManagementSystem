@@ -9,14 +9,13 @@ class Property extends Model
 {
     use HasFactory;
 
+    protected $table = 'properties';
+
     protected $fillable = [
         'name',
         'lease_status',
         'location',
-        'pricing',
-        'start_date',
-        'end_date'
+        'property_type',
+        'lease_type',
     ];
-
-    protected $table='properties';
 }

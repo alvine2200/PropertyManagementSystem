@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('lease_status')->default('unallocated');
+            $table->string('property_type');
+            $table->string('lease_status')->default('unallocated')->nullable();
+            $table->string('lease_type');
             $table->string('location');
-            $table->float('pricing');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Roles and Permissions</title>
+  	<title>Property Management Sy</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -18,7 +18,7 @@
 	        </button>
         </div>
         <div class="">
-		  		<h1><a href="{{url('')}}" class="logo"> Welcome Back </a></h1>
+		  <h1><a href="{{url('')}}" class="logo"> Welcome Back </a></h1>
 	        <ul class="list-unstyled components mb-5">
               <li class="active">
 	            <a href="{{url('')}}"><span class="fa fa-plus mr-3"></span> Add Properties</a>
@@ -26,38 +26,38 @@
 	          <li>
 	            <a href="{{url('view_properties')}}"><span class="fa fa-eye-slash mr-3"></span>View Properties</a>
 	          </li>
-	        </ul>	       
+	        </ul> 
+        </div>
 
-	      </div>
-
-    	</nav>
+      </nav>
 
       <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Property Present </h2>
+        <h2 class="mb-4">Property Listing </h2>
+        @include('property.alerts')
         <table class="table table-striped table-hover">
             <thead>
               <tr>
                 <th scope="col">Property Name</th>
+                <th scope="col">Property Type</th>
                 <th scope="col">Location</th>
-                <th scope="col">Pricing</th>
                 <th scope="col">Lease Status</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">End Date</th>
-                <th scope="col">Options</th>
+                <th scope="col">Lease Type</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
                 @foreach($property as $prop)
                     <tr>
                         <td>{{$prop?->name}}</td>
-                        <td>{{$prop?->lease_status}}</td>
+                        <td>{{$prop?->property_type}}</td>
                         <td>{{$prop?->location}}</td>
-                        <td>{{$prop?->pricing}}</td>
-                        <td>{{$prop?->start_date}}</td>
-                        <td>{{$prop?->end_date}}</td>
+                        <td>{{$prop?->lease_status}}</td>
+                        <td>{{$prop?->lease_type}}</td>                        
+                        
                         <td>
-                        <a class="btn btn-success" href="{{url('prop_roles_permissions',$prop->id)}}">Roles & Permissions</a>                   
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a class="btn btn-success" href="{{url('edit_property',$prop->id)}}">Edit</a>
+                            <a class="btn btn-info" href="{{url('allocate_property',$prop->id)}}">Allocate</a>                                      
+                            <a href="{{url('delete_property',$prop->id)}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 @endforeach
